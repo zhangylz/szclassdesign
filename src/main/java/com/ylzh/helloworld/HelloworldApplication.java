@@ -24,11 +24,6 @@ public class HelloworldApplication {
 
     @Value("${server.port}")
     private Integer sPort;
-//    @Value("${https.ssl.key-store-password}")
-//    private String key_store_password;
-//
-//    @Value("${https.ssl.key-password}")
-//    private String key_password;
 
     // 这是spring boot 1.5.X以下版本的 添加了这个，下一个就不用添加了
    /* @Bean
@@ -39,15 +34,16 @@ public class HelloworldApplication {
     }
 　　*/
     // 这是spring boot 2.0.X版本的 添加这个，上一个就不用添加了
+    // http://tomcat.apache.org/tomcat-5.5-doc/catalina/docs/api/org/apache/catalina/deploy/SecurityConstraint.html#SecurityConstraint()
     @Bean
     public ServletWebServerFactory servletContainer() {
         TomcatServletWebServerFactory tomcat = new TomcatServletWebServerFactory(){
             @Override
             protected void postProcessContext(Context context) {
-                SecurityConstraint constraint = new SecurityConstraint();
-                constraint.setUserConstraint("CONFIDENTIAL");
+                SecurityConstraint constraint = new SecurityConstraint(); // 表示Web应用程序的安全性约束元素
+                constraint.setUserConstraint("CONFIDENTIAL");  // 为此安全性约束设置用户数据约束
                 SecurityCollection collection = new SecurityCollection();
-                collection.addPattern("/*");
+                collection.addPattern("/*"); // 根目录下所有请求 均需跳转
                 constraint.addCollection(collection);
                 context.addConstraint(constraint);
             }
