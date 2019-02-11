@@ -1,0 +1,9 @@
+http:
+  port: 8080
+server:
+  port: 8443 #端口号，这个一般是使用443，具体根据自己情况而定吧
+  ssl:
+    key-store: classpath:server.jks #classpath表示的是resource这个文件夹，冒号后面是你的证书文件名，这里我就用 *xxx.jks* 代替了
+    key-store-password: 123456 #这个是你的证书密码，我用 *xxx* 代替了
+    key-store-type: JKS #类型，填jks就成
+    key-password: 123456
