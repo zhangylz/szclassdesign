@@ -6,3 +6,7 @@ Windows 7 6.1
 Spring Boot v2.1.2 RELEASE
 
 第一个版本  支持 https， http自动跳转https
+
+
+使用Spring Initializr的Web界面
+要使用Spring Initializr，最直接的办法就是用浏览器打开http://start.spring.io，

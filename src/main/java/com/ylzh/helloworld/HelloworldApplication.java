@@ -17,7 +17,7 @@ import java.io.File;
 import java.io.IOException;
 
 
-@SpringBootApplication
+@SpringBootApplication // 开启组件扫描和自动配置
 public class HelloworldApplication {
     @Value("${http.port}")
     private Integer port;
@@ -64,7 +64,7 @@ public class HelloworldApplication {
         return connector;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args)  { // 负责启动引导程序
         SpringApplication.run(HelloworldApplication.class, args);
     }
 
