@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../static/favicon.ico">
+    <title>Database Editor</title>
+    <!--Emoji :P-->
+    <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="https://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="https://getbootstrap.com/docs/4.0/examples/cover/cover.css" rel="stylesheet">
+    <!-- Custom font and icons -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            padding-top: 5rem;
+        }
+        .starter-template {
+            padding: 3rem 1.5rem;
+            text-align: center;
+        }
+    </style>
+
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="/admin/database">Database Viewer</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/admin/home">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tables</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown01">
+                    <a class="dropdown-item" href="#">Table 1</a>
+                    <a class="dropdown-item" href="#">Table 2</a>
+                    <a class="dropdown-item" href="#">Table 3</a>
+                </div>
+            </li>
+
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <a class="nav-link">DB_DEMO <span class="sr-only">(current)</span></a>
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
+
+<main role="main" class="container">
+
+    <h3>Your database</h3>
+    <table class="table table-bordered ">
+        <thead>
+        <tr>
+            <th scope="col">User id</th>
+            <th scope="col">Active</th>
+            <th scope="col">Email</th>
+            <th scope="col">Last name</th>
+            <th scope="col">Name</th>
+            <th scope="col">Password</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${users}">
+            <th scope="row">
+                <p th:utext="${user.id}">
+            </th>
+            <td>
+                <p th:utext="${user.active}">
+            </td>
+            <td>
+                <p th:utext="${user.email}">
+            </td>
+            <td>
+                <p th:utext="${user.lastName}">
+            </td>
+            <td>
+                <p th:utext="${user.name}">
+            </td>
+
+            <td>
+                <p th:utext="${user.password}">
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+</main>
+
+
+
+
+<!-- ================================================== -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://getbootstrap.com/assets/js/vendor/popper.min.js"></script>
+<script src="https://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

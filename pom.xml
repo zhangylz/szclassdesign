@@ -11,10 +11,13 @@
     <groupId>com.ylzh</groupId>
     <artifactId>demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    
     <name>helloworld</name>
     <description>helloworld project for Spring Boot</description>
 
     <properties>
+    	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
     </properties>
 
@@ -31,21 +34,92 @@
         </dependency>
         
         <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+        
+        <dependency>
               <groupId>mysql</groupId>
               <artifactId>mysql-connector-java</artifactId>
-          </dependency>
-          <dependency>
+              <scope>runtime</scope>
+        </dependency>
+        
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jdbc</artifactId>
         </dependency>
+        
+        <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+        
+        <!-- login 模块 安全认证  -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        
+        <!-- https://mvnrepository.com/artifact/net.sourceforge.nekohtml/nekohtml -->
+		<dependency>
+			<groupId>net.sourceforge.nekohtml</groupId>
+			<artifactId>nekohtml</artifactId>
+			<version>1.9.21</version><!--$NO-MVN-MAN-VER$-->
+		</dependency>
+		
+		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
+        </dependency>
+        
+        <!-- 验证码 -->
+		<dependency>
+			<groupId>com.github.axet</groupId>
+			<artifactId>kaptcha</artifactId>
+			<version>0.0.9</version>
+		</dependency>
     </dependencies>
 	<!-- 运用Spring Boot 插件  -->
     <build>
+
         <plugins>
+           	<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.7.8</version>
+				<executions>
+					<execution>
+						<id>pre-unit-test</id>
+						<goals>
+						<goal>prepare-agent</goal>
+						</goals>
+						<configuration>
+							<propertyName>surefireArgLine</propertyName>
+						</configuration>
+					</execution>
+					<execution>
+						<id>post-unit-test</id>
+						<phase>test</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+           
+			<plugin>
+				<groupId>org.eluder.coveralls</groupId>
+				<artifactId>coveralls-maven-plugin</artifactId>
+			</plugin>
         </plugins>
     </build>
 

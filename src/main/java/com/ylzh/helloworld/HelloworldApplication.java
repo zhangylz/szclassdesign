@@ -2,7 +2,6 @@ package com.ylzh.helloworld;
 
 import org.apache.catalina.Context;
 import org.apache.catalina.connector.Connector;
-import org.apache.coyote.http11.Http11NioProtocol;
 import org.apache.tomcat.util.descriptor.web.SecurityCollection;
 import org.apache.tomcat.util.descriptor.web.SecurityConstraint;
 import org.springframework.beans.factory.annotation.Value;
@@ -11,10 +10,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
-import org.springframework.core.io.ClassPathResource;
-
-import java.io.File;
-import java.io.IOException;
 
 
 @SpringBootApplication // 开启组件扫描和自动配置

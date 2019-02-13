@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+	<link rel="icon" href="../static/favicon.ico">
+	<title>Registration</title>
+	<!--Emoji :P-->
+	<link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+	<!--CSS-->
+	<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+	<link href="https://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+	<!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+	<h2 align="center">Registration Form</h2>
+	<div class="container">
+		<form autocomplete="off" action="#" th:action="@{/registration}"
+		  th:object="${user}" method="post" class="form-signin" role="form">
+			<div class="form-group">
+				<input type="text" th:field="*{name}" placeholder="Name" class="form-control" />
+				<label th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="validation-message"></label>
+				<br/>
+				<input type="text" th:field="*{lastName}" placeholder="Last Name" class="form-control" />
+				<label	th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="validation-message">
+
+				</label><br/>
+
+
+							<input type="text" th:field="*{email}" placeholder="Email"
+								   class="form-control" />
+							<label
+								th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+								class="validation-message"></label><br/>
+
+
+							<input type="password" th:field="*{password}"
+								   placeholder="Password" class="form-control" />
+							<label
+								th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
+								class="validation-message"></label><br/>
+							<button type="submit" class="btn btn-success btn-block">Register User</button>
+							<span th:utext="${successMessage}" th:align="center"></span>
+							<h4 class="text-center"><a href="login">Login</a></h4>
+
+
+			</div>
+		</form>
+	</div>
+
+	<div class="footer">
+		<h6>Made with <i class="em em-heart"></i> by h3xb0y</h6>
+	</div>
+	<!-- ================================================== -->
+	<script src="./scripts/jquery-3.1.1.min.js" ></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>
