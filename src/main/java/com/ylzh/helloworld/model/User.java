@@ -1,5 +1,6 @@
 package com.ylzh.helloworld.model;
 
+import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -36,7 +37,7 @@ public class User {
 	@NotEmpty(message = "*Please provide your password")
 	@Transient
 	private String password;
-	@Column(name = "name")
+	@Column(name = "first_name")
 	@NotEmpty(message = "*Please provide your name")
 	private String name;
 	@Column(name = "last_name")
@@ -44,6 +45,12 @@ public class User {
 	private String lastName;
 	@Column(name = "active")
 	private int active;
+	@Column(name = "create_time")
+	private Date createTime;
+	@Column(name = "last_login_time")
+	private Date lastLoginTime;
+	@Column(name = "update_time")
+	private Date updateTime;
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles;
@@ -103,5 +110,16 @@ public class User {
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
 	}
-
+	
+	public void setCreateTime() {
+		this.createTime = new Date();
+	}
+	
+	public void updateLastLoginTime() {
+		this.lastLoginTime = new Date();
+	}
+	
+	public void updateUpdateTime() {
+		this.updateTime = new Date();
+	}
 }

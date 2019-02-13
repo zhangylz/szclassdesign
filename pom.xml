@@ -74,10 +74,23 @@
         </dependency>
         
         <!-- 验证码 -->
+		<!-- https://mvnrepository.com/artifact/com.github.penggle/kaptcha -->
 		<dependency>
-			<groupId>com.github.axet</groupId>
+			<groupId>com.github.penggle</groupId>
 			<artifactId>kaptcha</artifactId>
-			<version>0.0.9</version>
+			<version>2.3.2</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.6</version>
+		</dependency>
+		
+		<!-- apache shiro -->
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-spring</artifactId>
+			<version>1.4.0</version>
 		</dependency>
     </dependencies>
 	<!-- 运用Spring Boot 插件  -->

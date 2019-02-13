@@ -36,7 +36,16 @@ public class UserServiceImpl implements UserService{
         user.setActive(1);
         Role userRole = roleRepository.findByRole("ADMIN");
         user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
+		user.setCreateTime();
+		user.updateLastLoginTime();
+		user.updateUpdateTime();
 		userRepository.save(user);
 	}
+	
+    @Override
+    public void updateLastLoginTime(User user) {
+    	user.updateLastLoginTime();
+    	userRepository.save(user);
+    }
 
 }
