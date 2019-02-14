@@ -47,5 +47,10 @@ public class UserServiceImpl implements UserService{
     	user.updateLastLoginTime();
     	userRepository.save(user);
     }
+    
+    @Override
+    public User selectByUsername(String userName) {
+    	return userRepository.findByLastName(userName);
+    }
 
 }

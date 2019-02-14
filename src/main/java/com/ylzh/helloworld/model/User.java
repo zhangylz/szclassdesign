@@ -39,7 +39,7 @@ public class User {
 	private String password;
 	@Column(name = "first_name")
 	@NotEmpty(message = "*Please provide your name")
-	private String name;
+	private String firstName;
 	@Column(name = "last_name")
 	@NotEmpty(message = "*Please provide your last name")
 	private String lastName;
@@ -54,6 +54,13 @@ public class User {
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles;
+	
+	private String userId;
+    /**
+     * 登录ip
+     */
+    @Transient
+    private String loginIpAddress;
 
 	public int getId() {
 		return id;
@@ -71,12 +78,12 @@ public class User {
 		this.password = password;
 	}
 
-	public String getName() {
-		return name;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setFirstName(String name) {
+		this.firstName = name;
 	}
 
 	public String getLastName() {
@@ -122,4 +129,38 @@ public class User {
 	public void updateUpdateTime() {
 		this.updateTime = new Date();
 	}
+	
+    /**
+     * 获取用户id
+     *
+     * @return user_id - 用户id
+     */
+    public String getUserId() {
+        return userId;
+    }
+
+    /**
+     * 设置用户id
+     *
+     * @param userId 用户id
+     */
+    public void setUserId(String userId) {
+        this.userId = userId == null? "":userId.trim();
+    }
+    
+    public void setLoginIpAddress(String loginIpAddress) {
+        this.loginIpAddress = loginIpAddress;
+    }
+    
+    /**
+    *
+    * 重写获取盐值方法，自定义realm使用
+    * Gets credentials salt.
+    *
+    * @return the credentials salt
+    */
+   public String getCredentialsSalt() {
+       return firstName + lastName + "com.ylzh";
+   }
+    
 }

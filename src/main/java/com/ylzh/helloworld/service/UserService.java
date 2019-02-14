@@ -10,5 +10,5 @@ public interface UserService {
      * @param user
      */
     void updateLastLoginTime(User user);
-
+    User selectByUsername(String userName);
 }

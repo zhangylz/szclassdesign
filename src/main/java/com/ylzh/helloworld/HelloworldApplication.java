@@ -11,8 +11,11 @@ import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactor
 import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
 
+import tk.mybatis.spring.annotation.MapperScan;
 
 @SpringBootApplication // 开启组件扫描和自动配置
+// https://blog.csdn.net/zhangcc233/article/details/80898931 
+@MapperScan("com.ylzh.helloworld.mapper")
 public class HelloworldApplication {
     @Value("${http.port}")
     private Integer port;

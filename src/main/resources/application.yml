@@ -7,3 +7,51 @@ server:
     key-store-password: 123456 #这个是你的证书密码，我用 *xxx* 代替了
     key-store-type: JKS #类型，填jks就成
     key-password: 123456
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/helloworld?characterEncoding=utf-8&serverTimezone=UTC
+    username: root
+    password: 123456
+    # 初始化大小，最小，最大
+    initialSize: 1
+    minIdle: 3
+    maxActive: 20
+    # 配置获取连接等待超时的时间
+    maxWait: 60000
+    filters: stat,wall,slf4j
+  thymeleaf:
+    cache: false
+    mode: HTML
+  # ===============================
+  # = Thymeleaf configurations
+  # ===============================
+  redis:
+    host: localhost
+    port: 6379
+    password: 123456
+    timeout: 5000
+    jedis:
+      pool:
+        max-idle: 8
+        min-idle: 0
+        max-active: 8
+        max-wait: -1
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+mybatis:
+  type-aliases-package: com.ylzh.helloworld.model
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+mapper: 
+  mappers: com.ylzh.helloworld.util.MapperUtil
+  not-empty: false
+  identity: MYSQL
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
