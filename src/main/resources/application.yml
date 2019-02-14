@@ -10,7 +10,7 @@ server:
 spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
-    driverClassName: com.mysql.cj.jdbc.Driver
+    driverClassName: com.mysql.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/helloworld?characterEncoding=utf-8&serverTimezone=UTC
     username: root
     password: 123456
